@@ -1,0 +1,12 @@
+{
+  "name": "eco",
+  "displayName": "eco",
+  "expo": {
+    "name": "eco",
+    "slug": "eco",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
