@@ -48,5 +48,5 @@ export function removeMCPF(cpf: any) {
     cpf = cpf && cpf.toString()
     cpf = cpf.replace('.', '')
     cpf = cpf.replace('-', '')
-    return cpf
+    return cpf;
 }
