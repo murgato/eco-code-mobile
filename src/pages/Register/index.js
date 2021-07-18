@@ -1,6 +1,7 @@
 import React from 'react';
-import {Container, Input, Button, BtnText, Title} from './styles';
+import {Container, Input, Button, BtnText, Title, RegisterText} from './styles';
 import {useNavigation} from "@react-navigation/native";
+
 
 export const Register = () => {
     const navigation = useNavigation();
@@ -9,7 +10,9 @@ export const Register = () => {
     }
     return (
         <Container>
+            <RegisterText>
             <Title>Registro</Title>
+            </RegisterText>
                 <Input autoFocus={true} placeholder="Digite seu nome completo"/>
                 <Input placeholder="Digite seu CPF"/>
                 <Input placeholder="Digite seu telefone"/>

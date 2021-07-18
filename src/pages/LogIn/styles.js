@@ -8,8 +8,6 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-
-
 export const Input = styled.TextInput`
   border-radius: 8px;
   height: 33px;

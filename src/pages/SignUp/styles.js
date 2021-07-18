@@ -33,3 +33,13 @@ export const Button = styled.TouchableOpacity`
 export const BtnText = styled.Text`
   color: #fff;
 `;
+
+  export const img = styled.Text`
+      height: 20;
+      width: 20;
+  `;
+ export const  btn = styled.Text`
+      flex-direction: 'row';
+      align-items: 'center';
+  `;
+

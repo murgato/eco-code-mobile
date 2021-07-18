@@ -35,3 +35,15 @@ export const Title = styled.Text`
   font-size: 22px;
   margin-bottom: 25px;
 `;
+
+// -- -- 
+export const RegisterText = styled.Text`
+ width: 287px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border: 1px solid #037;
+  padding: 5px 10px 5px 95px;
+  border-radius: 10px;
+  margin: 0`;

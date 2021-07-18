@@ -10,12 +10,12 @@ import {
     TypeContainer,
     Type,
     Image,
-    TextCard
+    TextCard,
+    Cards
 } from './styles';
 import {useNavigation} from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ScrollView} from "react-native";
-
 
 export const Home = () => {
     const navigation = useNavigation();
@@ -34,9 +34,11 @@ export const Home = () => {
                     <Text>Acessar historico</Text>
                     <Text>Dados pessoais</Text>
                 </CardLegendContainer>
+                <Cards>
                 <Title>
                     Selecione o tipo de ocorrência
                 </Title>
+                </Cards>
                 <Hr/>
                 <TypeContainer style={{backgroundColor: '#017'}}>
                     <Type onPress={() => navigation.navigate("Occurrence")}>

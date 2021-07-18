@@ -5,6 +5,10 @@ import {StyleSheet, TouchableOpacity, View} from "react-native";
 import {Image} from "../Home/styles";
 import api from "../../config/axiosConfig";
 import {login} from "../../services/auth";
+import ReactDOM from "react-dom";
+
+
+
 
 export const SignUp = ({route}) => {
     const navigation = useNavigation();
@@ -49,7 +53,6 @@ export const SignUp = ({route}) => {
     }
 
 
-    // TODO melhorar design e transformar tudo em styledComponents, implementar armazenamento de token
     return (
         <Container>
             <Text>Selecione o nome da sua mãe</Text>
@@ -99,14 +102,4 @@ export const SignUp = ({route}) => {
     )
 }
 
-const styles = StyleSheet.create({
-    img: {
-        height: 20,
-        width: 20
-    },
-    btn: {
-        flexDirection: 'row',
-        alignItems: "center"
-    }
-});
 

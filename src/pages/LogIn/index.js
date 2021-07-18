@@ -15,11 +15,19 @@ export const Login = () => {
                 params: {cpf}
             })
         } else {
+            try {
+                response.status != 200
+            } catch (error){
+                console.log("CPF não cadastrado")
+            }
+
+              }
             // TODO tratamento de exception
         }
-    }
+    
     return (
         <Container>
+            <Text> Identificação </Text>
             <Input autoFocus={true} placeholder="Digite seu CPF" value={cpf} onChangeText={setCpf}/>
             <Button onPress={handleOnContinue}>
                 <BtnText>Continuar</BtnText>
@@ -30,4 +38,4 @@ export const Login = () => {
             </Button>
         </Container>
     )
-}
+ }

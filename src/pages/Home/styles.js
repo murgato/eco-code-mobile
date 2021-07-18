@@ -74,7 +74,7 @@ export const TypeContainer = styled.View`
 export const Type = styled.TouchableOpacity`
   border-bottom-color: #aaa;
   border-bottom-width: 1px;
-  marginBottom: 1px;
+  margin-bottom: 1px;
   padding: 10px;
   border-radius: 5px;
   flex-direction: row;
@@ -87,4 +87,15 @@ export const Image = styled.Image`
   border-radius: 5px;
   width: 50px;
   height: 50px;
+`;
+export const Cards = styled.Text`
+  width: 359px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  border: 3px solid #037;
+  padding: 9px 30px 5px 30px;
+  border-radius: 10px;
+  margin: 0;
 `;
