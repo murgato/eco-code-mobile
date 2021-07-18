@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "front-mobile1",
+    "slug": "front-mobile1",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "front-mobile1"
+}
