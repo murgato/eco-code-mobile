@@ -36,9 +36,9 @@ export const Title = styled.Text`
   margin-bottom: 25px;
 `;
 
-// -- -- 
+
 export const RegisterText = styled.Text`
- width: 287px;
+  width: 287px;
   height: 40px;
   align-items: center;
   justify-content: center;
@@ -46,4 +46,4 @@ export const RegisterText = styled.Text`
   border: 1px solid #037;
   padding: 5px 10px 5px 95px;
   border-radius: 10px;
-  margin: 0`;
+  margin: 10px`;

@@ -8,6 +8,11 @@ export const Container = styled.View`
   align-items: center;
 `;
 
+export const Error = styled.Text`
+  font-weight: bold;
+  color: red;
+`;
+
 export const Input = styled.TextInput`
   border-radius: 8px;
   height: 33px;

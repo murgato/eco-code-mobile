@@ -1,6 +1,7 @@
 import React from 'react';
 import {Container, Input, Button, BtnText, Title, RegisterText} from './styles';
 import {useNavigation} from "@react-navigation/native";
+import {ScrollView} from "react-native";
 
 
 export const Register = () => {
@@ -9,10 +10,11 @@ export const Register = () => {
         navigation.navigate("Home");
     }
     return (
-        <Container>
-            <RegisterText>
-            <Title>Registro</Title>
-            </RegisterText>
+        <ScrollView>
+            <Container>
+                <RegisterText>
+                    <Title>Registro</Title>
+                </RegisterText>
                 <Input autoFocus={true} placeholder="Digite seu nome completo"/>
                 <Input placeholder="Digite seu CPF"/>
                 <Input placeholder="Digite seu telefone"/>
@@ -22,6 +24,8 @@ export const Register = () => {
                 <Button onPress={handleOnRegister}>
                     <BtnText>Cadastrar</BtnText>
                 </Button>
-        </Container>
+            </Container>
+        </ScrollView>
+
     )
 }
