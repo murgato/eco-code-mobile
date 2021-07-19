@@ -50,96 +50,87 @@ export class Occurrence extends Component {
     },
     cameraModalOpened: false,
     dataModalOpened: false,
-    camera: null,
   };
 
-  handleCameraModalClose = () =>
-    this.setState({ cameraModalOpened: !this.state.cameraModalOpened });
+  handleCameraModalClose = () => this.setState({cameraModalOpened: !this.state.cameraModalOpened})
 
-  handleDataModalClose = () =>
-    this.setState({
-      dataModalOpened: !this.state.dataModalOpened,
-      cameraModalOpened: false,
-    });
+  handleDataModalClose = () => this.setState({
+    dataModalOpened: !this.state.dataModalOpened,
+    cameraModalOpened: false,
+  })
 
   handleTakePicture = async () => {
-    if (this.state.camera) {
-      const options = {
-        quality: 0.5,
-        base64: true,
-        forceUpOrientation: true,
-        fixOrientation: true,
-      };
-      const data = await this.state.camera.takePictureAsync(options);
-      const { occurrence } = this.state;
+    if (this.camera) {
+      const options = {quality: 0.5, base64: true, forceUpOrientation: true, fixOrientation: true,};
+      const data = await this.camera.takePictureAsync(options)
+      const {occurrence} = this.state;
       this.setState({
         occurrence: {
           ...occurrence,
-          files: occurrence.files.append(data),
-        },
-      });
+          files: [
+            ...occurrence.files,
+            data,
+          ]
+        }
+      })
     }
-  };
+  }
 
   renderImagesList = () =>
-    this.state.occurrence.files.length !== 0 ? (
-      <ModalImagesListContainer>
-        <ModalImagesList horizontal>
-          {this.state.occurrence.files.map((image) => (
-            <ModalImageItem
-              source={{ uri: image.uri }}
-              key={image.uri}
-              resizeMode="stretch"
-            />
-          ))}
-        </ModalImagesList>
-      </ModalImagesListContainer>
-    ) : (
-      <Attention>Anexe pelo menos uma foto para continuar</Attention>
-    );
+      this.state.occurrence.files.length !== 0 ? (
+          <ModalImagesListContainer>
+            <ModalImagesList horizontal>
+              {this.state.occurrence.files.map((image) => (
+                  <ModalImageItem
+                      source={{ uri: image.uri }}
+                      key={image.uri}
+                      resizeMode="stretch"
+                  />
+              ))}
+            </ModalImagesList>
+          </ModalImagesListContainer>
+      ) : (
+          <Attention>Anexe pelo menos uma foto para continuar</Attention>
+      );
 
   renderCameraModal = () => (
-    <Modal
-      visible={this.state.cameraModalOpened}
-      transparent={false}
-      animationType="slide"
-      onRequestClose={this.handleCameraModalClose}
-    >
-      <ModalContainer>
+      <Modal
+          visible={this.state.cameraModalOpened}
+          transparent={false}
+          animationType="slide"
+          onRequestClose={this.handleCameraModalClose}
+      >
         <ModalContainer>
-          <RNCamera
-            style={{ flex: 1 }}
-            type={RNCamera.Constants.Type.back}
-            flashMode={RNCamera.Constants.FlashMode.on}
-            androidCameraPermissionOptions={{
-              title: "Permission to use camera",
-              message: "We need your permission to use your camera",
-              buttonPositive: "Ok",
-              buttonNegative: "Cancel",
-            }}
-            androidRecordAudioPermissionOptions={{
-              title: "Permission to use audio recording",
-              message: "We need your permission to use your audio",
-              buttonPositive: "Ok",
-              buttonNegative: "Cancel",
-            }}
-          />
-          <TakePictureButtonContainer onPress={this.handleTakePicture}>
-            <TakePictureButtonLabel />
-          </TakePictureButtonContainer>
+          <ModalContainer>
+            <RNCamera
+                ref={camera => {
+                  this.camera = camera;
+                }}
+                style={{flex: 1}}
+                type={RNCamera.Constants.Type.back}
+                autoFocus={RNCamera.Constants.AutoFocus.on}
+                flashMode={RNCamera.Constants.FlashMode.off}
+                permissionDialogTitle={"Permission to use camera"}
+                permissionDialogMessage={
+                  "We need your permission to use your camera phone"
+                }
+            />
+            <TakePictureButtonContainer onPress={this.handleTakePicture}>
+              <TakePictureButtonLabel/>
+            </TakePictureButtonContainer>
+          </ModalContainer>
+          {this.renderImagesList()}
+          <ModalButtons>
+            <CameraButtonContainer onPress={this.handleCameraModalClose}>
+              <CancelButtonText>Cancelar</CancelButtonText>
+            </CameraButtonContainer>
+            <CameraButtonContainer onPress={this.handleDataModalClose}>
+              <ContinueButtonText>Continuar</ContinueButtonText>
+            </CameraButtonContainer>
+          </ModalButtons>
         </ModalContainer>
-        {this.renderImagesList()}
-        <ModalButtons>
-          <CameraButtonContainer onPress={this.handleCameraModalClose}>
-            <CancelButtonText>Cancelar</CancelButtonText>
-          </CameraButtonContainer>
-          <CameraButtonContainer onPress={this.handleDataModalClose}>
-            <ContinueButtonText>Continuar</ContinueButtonText>
-          </CameraButtonContainer>
-        </ModalButtons>
-      </ModalContainer>
-    </Modal>
-  );
+      </Modal>
+  )
 
   handleOnSave = async () => {
     let bodyFormData = new FormData();
